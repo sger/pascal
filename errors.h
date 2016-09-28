@@ -3,6 +3,7 @@
 
 enum ErrorCode {
 	invalidCommandLineArgs = -1,
+	sourceFileOpenFailed = -2,
 };
 
 void abort(ErrorCode errorCode);

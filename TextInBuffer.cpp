@@ -5,6 +5,8 @@
 #include <time.h>
 
 char eofChar = 0x7F;
+int inputPosition;
+int listFlag = true;
 
 TextInBuffer::TextInBuffer(const char *pInputFileName, ErrorCode errorCode) : pFileName(new char[strlen(pInputFileName) + 1])
 {
@@ -20,5 +22,24 @@ TextInBuffer::TextInBuffer(const char *pInputFileName, ErrorCode errorCode) : pF
 
 char TextInBuffer::getChar()
 {
+	const int tabSize = 8;
+	char ch;
 
+	if (*pChar == eofChar)
+	{
+		return eofChar;
+	} else if (*pChar == '\0') {
+		ch = getLine();
+	} else {
+		++pChar;
+		++inputPosition;
+		ch = *pChar;
+	}
+
+	if (ch == '\t')
+	{
+		inputPosition += tabSize - inputPosition % tabSize;
+	}
+
+	return ch;
 }

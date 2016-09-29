@@ -1,7 +1,7 @@
 #ifndef source_buffer_h
 #define source_buffer_h
 
-#include "TextInBuffer.h"
+#include "text_in_buffer.h"
 
 extern char inputPosition;
 extern int listFlag;

@@ -10,4 +10,3 @@ BEGIN {hello}
         writeln('Hello, world.');
     END;
 END {hello}.
-

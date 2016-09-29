@@ -1,9 +1,15 @@
 #include "source_buffer.h"
 #include <iostream>
 
+#include "common.h"
+#include "list_buffer.h"
+
 SourceBuffer::SourceBuffer(const char *sourceFileName) : TextInBuffer(sourceFileName, sourceFileOpenFailed)
 {
-	
+	if (listFlag)
+	{
+		list.initialize(sourceFileName);
+	}
 }
 
 char SourceBuffer::getLine()
@@ -19,11 +25,9 @@ char SourceBuffer::getLine()
 
 		if (listFlag)
 		{
-			// TODO
+			list.putLine(text, ++currentLineNumber, currentNestingLevel);
 		}
 	}
-
-	std::cout << pChar << std::endl;
 
 	inputPosition = 0;
 

@@ -1,5 +1,5 @@
-#ifndef textIn_buffer_h
-#define textIn_buffer_h
+#ifndef text_in_buffer_h
+#define text_in_buffer_h
 
 #include <fstream>
 #include "errors.h"

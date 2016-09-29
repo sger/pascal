@@ -1,4 +1,4 @@
-#include "TextInBuffer.h"
+#include "text_in_buffer.h"
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -42,4 +42,12 @@ char TextInBuffer::getChar()
 	}
 
 	return ch;
+}
+
+char TextInBuffer::putBackChar()
+{
+	--pChar;
+	--inputPosition;
+
+	return *pChar;
 }

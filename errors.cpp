@@ -5,6 +5,7 @@
 static const char* const messages[] = {
 	NULL,
     "Invalid command line arguments",
+    "Failed to open source file",
 };
 
 void abort(ErrorCode errorCode)

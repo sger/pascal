@@ -9,6 +9,7 @@ SourceBuffer::SourceBuffer(const char *sourceFileName) : TextInBuffer(sourceFile
 	if (listFlag)
 	{
 		list.initialize(sourceFileName);
+		getLine();
 	}
 }
 

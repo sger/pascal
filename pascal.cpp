@@ -2,6 +2,7 @@
 
 #include "errors.h"
 #include "source_buffer.h"
+#include "text_in_buffer.h"
 #include "parser.h"
 
 int main(int argc, char *argv[])
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
         ch = sourceBuffer.getChar();
     } while (ch != eofChar);*/
 
-    Parser parser();
-    //parser.parse();
+    SourceBuffer *sourceBuffer = new SourceBuffer(argv[1]);
+    Parser parser(sourceBuffer);
+    parser.parse();
 }

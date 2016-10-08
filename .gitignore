@@ -1,0 +1,4 @@
+build
+*.o
+pascal
+.DS_STORE

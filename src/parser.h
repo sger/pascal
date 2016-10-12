@@ -6,6 +6,7 @@
 
 class Parser {
 	TextScanner *const pTextScanner;
+	void getToken();
 public:
 	Parser(TextInBuffer *textInBuffer) : pTextScanner(new TextScanner(textInBuffer)) {}
 	~Parser() {

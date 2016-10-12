@@ -2,6 +2,8 @@
 #include <iostream>
 #include "errors.h"
 
+int errorCount = 0;
+
 static const char* const messages[] = {
 	NULL,
     "Invalid command line arguments",

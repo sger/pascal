@@ -10,7 +10,7 @@ protected:
 	char tokenString[maxInputBufferSize];
 public:
 	Token() {
-		tokenCode = Dummy;
+		tokenCode = tcDummy;
 		tokenString[0] = '\0';
 	}
 

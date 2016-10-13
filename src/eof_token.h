@@ -1,13 +1,13 @@
-#ifndef number_token_h
-#define number_token_h
+#ifndef eof_token_h
+#define eof_token_h
 
 #include "token.h"
 #include "text_in_buffer.h"
 
-class NumberToken : public Token {
+class EOFToken : public Token {
 public:
-	NumberToken() {
-		tokenCode = tcNumber;
+	EOFToken() {
+		tokenCode = tcEndOfFile;
 	}
 	virtual void get(TextInBuffer &buffer);
 	virtual void print() const;

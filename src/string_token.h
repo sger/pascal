@@ -1,14 +1,11 @@
-#ifndef number_token_h
-#define number_token_h
+#ifndef string_token_h
+#define string_token_h
 
 #include "token.h"
 #include "text_in_buffer.h"
 
-class NumberToken : public Token {
+class StringToken : public Token {
 public:
-	NumberToken() {
-		tokenCode = tcNumber;
-	}
 	virtual void get(TextInBuffer &buffer);
 	virtual void print() const;
 };

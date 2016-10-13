@@ -1,8 +1,8 @@
 #ifndef common_h
 #define common_h
 
-#include <string.h>
-#include <ctype.h>
+// #include <string.h>
+// #include <ctype.h>
 
 const int FALSE = 0;
 const int TRUE = 1;
@@ -44,16 +44,5 @@ union DataValue {
 	char *pString;
 };
 
-char *strlwr(char *str)
-{
-  unsigned char *p = (unsigned char *)str;
-
-  while (*p) {
-     *p = tolower(*p);
-      p++;
-  }
-
-  return str;
-}
 
 #endif

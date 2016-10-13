@@ -9,8 +9,8 @@ public:
 	EOFToken() {
 		tokenCode = tcEndOfFile;
 	}
-	virtual void get(TextInBuffer &buffer);
-	virtual void print() const;
+	virtual void get(TextInBuffer &buffer) {}
+	virtual void print() const {}
 };
 
 #endif

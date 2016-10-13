@@ -25,8 +25,7 @@ char TextInBuffer::getChar()
 	const int tabSize = 8;
 	char ch;
 
-	if (*pChar == eofChar)
-	{
+	if (*pChar == eofChar) {
 		return eofChar;
 	} else if (*pChar == '\0') {
 		ch = getLine();
@@ -36,8 +35,7 @@ char TextInBuffer::getChar()
 		ch = *pChar;
 	}
 
-	if (ch == '\t')
-	{
+	if (ch == '\t') {
 		inputPosition += tabSize - inputPosition % tabSize;
 	}
 

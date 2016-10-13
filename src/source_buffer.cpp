@@ -6,26 +6,21 @@
 
 SourceBuffer::SourceBuffer(const char *sourceFileName) : TextInBuffer(sourceFileName, sourceFileOpenFailed)
 {
-	if (listFlag)
-	{
-		list.initialize(sourceFileName);
-		getLine();
-	}
+	if (listFlag) list.initialize(sourceFileName);
+	getLine();
 }
 
 char SourceBuffer::getLine()
 {
-	extern int lineNumber;
+	extern int lineNumber, currentNestingLevel;
 
-	if (file.eof())
-	{
+	if (file.eof()) {
 		pChar = &eofChar;
 	} else {
 		file.getline(text, maxInputBufferSize);
 		pChar = text;
 
-		if (listFlag)
-		{
+		if (listFlag) {
 			list.putLine(text, ++currentLineNumber, currentNestingLevel);
 		}
 	}

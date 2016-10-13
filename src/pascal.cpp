@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     do {
         ch = sourceBuffer.getChar();
-    } while (ch != eofChar);*/
+    } while (ch != eofChar); */
 
     Parser parser(new SourceBuffer(argv[1]));
     parser.parse();

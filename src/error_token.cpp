@@ -4,9 +4,7 @@
 #include <string.h>
 
 void ErrorToken::get(TextInBuffer &buffer) {
-
-}
-
-void ErrorToken::print() const {
-
+	tokenString[0] = buffer.Char();
+	tokenString[1] = '\0';
+	buffer.getChar();
 }

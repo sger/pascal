@@ -33,8 +33,7 @@ void ListBuffer::initialize(const char *pFileName)
 
 void ListBuffer::putLine()
 {
-	if (listFlag && (lineCount == maxLinesPerPage))
-	{
+	if (listFlag && (lineCount == maxLinesPerPage)) {
 		printPageHeader();
 	}
 

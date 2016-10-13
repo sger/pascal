@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "list_buffer.h"
+#include "helpers.h"
 
 void WordToken::get(TextInBuffer &buffer) {
 	char ch = buffer.Char();

@@ -10,7 +10,7 @@ public:
 		tokenCode = tcError;
 	}
 	virtual void get(TextInBuffer &buffer);
-	virtual void print() const;
+	virtual void print() const {}
 };
 
 #endif

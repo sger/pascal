@@ -3,6 +3,7 @@
 
 #include "scanner.h"
 #include "text_in_buffer.h"
+#include "token.h"
 
 class TextScanner : public Scanner {
 	TextInBuffer *const pTextInBuffer;
@@ -12,6 +13,8 @@ public:
 	virtual ~TextScanner() {
 		delete pTextInBuffer;
 	}
+
+	virtual Token *get();
 };
 
 #endif

@@ -15,7 +15,7 @@ void Parser::parse() {
 		{
 			currentToken->print();
 		} else {
-			sprintf(list.text, "\t%-18s %-s", ">> *** ERROR ***", currentToken->string());
+			sprintf(list.text, "\t%-18s %-s", ">> *** ERROR ***", currentToken->getTokenString());
 			list.putLine();
 			++errorCount;
 		}

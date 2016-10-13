@@ -55,17 +55,20 @@ TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffe
 }
 
 void TextScanner::skipWhiteSpace() {
-	std::cout << "skipWhiteSpace()" << std::endl;
+	char ch = pTextInBuffer->Char();
+
+	while(charCodeMap[ch] == ccWhiteSpace) {
+		ch = pTextInBuffer->getChar();
+	}
 }
 
 Token *TextScanner::get() {
-	std::cout << "get()" << std::endl;
-
 	Token *currentToken = NULL;
 
 	skipWhiteSpace();
 
 	switch(charCodeMap[pTextInBuffer->Char()]) {
+
 		case ccLetter:
 			currentToken = &wordToken;
 			break;

@@ -6,9 +6,7 @@
 #include "errors.h"
 
 void Parser::parse() {
-	std::cout << "starting parser" << std::endl;
-
-	/*do {
+	do {
 		getToken();
 
 		if (currentTokenCode != tcError) {
@@ -18,19 +16,11 @@ void Parser::parse() {
 			list.putLine();
 			++errorCount;
 		}
-	} while (currentTokenCode != tcEndOfFile);*/
+	} while (currentTokenCode != tcEndOfFile);
 
 	list.putLine();
 	sprintf(list.text, "%20d source lines.", currentLineNumber);
 	list.putLine();
 	sprintf(list.text, "%20d syntax errors.", errorCount);
 	list.putLine();
-}
-
-void Parser::getToken() {
-	std::cout << "get token" << std::endl;
-	currentToken = pTextScanner->get();
-	currentTokenCode = currentToken->code();
-	std::cout << "currentToken " << currentToken << std::endl;
-	std::cout << "currentTokenCode " << currentTokenCode << std::endl;
 }

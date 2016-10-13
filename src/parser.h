@@ -11,7 +11,10 @@ class Parser {
 	Token *currentToken;
 	TokenCode currentTokenCode;
 
-	void getToken();
+	void getToken() {
+		currentToken = pTextScanner->get();
+		currentTokenCode = currentToken->code();
+	}
 public:
 	Parser(TextInBuffer *textInBuffer) : pTextScanner(new TextScanner(textInBuffer)) {}
 	~Parser() {

@@ -67,7 +67,7 @@ Token *TextScanner::get() {
 
 	switch(charCodeMap[pTextInBuffer->Char()]) {
 		case ccLetter:
-			//currentToken = &wordToken;
+			currentToken = &wordToken;
 			break;
 		case ccDigit:
 			break;

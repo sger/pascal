@@ -3,9 +3,11 @@
 
 #include "token.h"
 #include "common.h"
+#include "word_token.h"
 
 class Scanner {
 protected:
+	WordToken wordToken;
 
 public:
 	virtual ~Scanner() {}

@@ -2,8 +2,56 @@
 
 #include <iostream>
 
-TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffer) {
+#include "errors.h"
+#include "source_buffer.h"
+#include "text_in_buffer.h"
+#include "parser.h"
 
+CharCode charCodeMap[128];
+
+TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffer) {
+	int i;
+
+	for(i = 0; i <= 127; i++) {
+		charCodeMap[i] = ccError;
+	}
+
+	for (int i = 'a'; i < 'z'; i++) {
+		charCodeMap[i] = ccLetter;
+	}
+
+	for (int i = 'A'; i < 'Z'; i++) {
+		charCodeMap[i] = ccLetter;
+	}
+
+	for (int i = '0'; i < '9'; i++) {
+		charCodeMap[i] = ccDigit;
+	}
+
+	charCodeMap['+'] = ccSpecial;
+	charCodeMap['-'] = ccSpecial;
+	charCodeMap['*'] = ccSpecial;
+	charCodeMap['/'] = ccSpecial;
+	charCodeMap['='] = ccSpecial;
+	charCodeMap['^'] = ccSpecial;
+	charCodeMap['.'] = ccSpecial;
+	charCodeMap[','] = ccSpecial;
+	charCodeMap['<'] = ccSpecial;
+	charCodeMap['>'] = ccSpecial;
+	charCodeMap['('] = ccSpecial;
+	charCodeMap[')'] = ccSpecial;
+	charCodeMap['['] = ccSpecial;
+	charCodeMap[']'] = ccSpecial;
+	charCodeMap['{'] = ccSpecial;
+	charCodeMap['}'] = ccSpecial;
+	charCodeMap[':'] = ccSpecial;
+	charCodeMap[';'] = ccSpecial;
+	charCodeMap[' '] = ccWhiteSpace;
+	charCodeMap['\t'] = ccWhiteSpace;
+	charCodeMap['\n'] = ccWhiteSpace;
+	charCodeMap['\0'] = ccWhiteSpace;
+	charCodeMap['\''] = ccQuote;
+	charCodeMap[eofChar] = ccEndOfFile;
 }
 
 void TextScanner::skipWhiteSpace() {

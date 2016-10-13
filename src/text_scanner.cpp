@@ -70,6 +70,7 @@ Token *TextScanner::get() {
 			currentToken = &wordToken;
 			break;
 		case ccDigit:
+			currentToken = &numberToken;
 			break;
 		case ccQuote:
 			break;

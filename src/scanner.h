@@ -4,10 +4,12 @@
 #include "token.h"
 #include "common.h"
 #include "word_token.h"
+#include "number_token.h"
 
 class Scanner {
 protected:
 	WordToken wordToken;
+	NumberToken numberToken;
 
 public:
 	virtual ~Scanner() {}

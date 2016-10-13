@@ -4,4 +4,13 @@
 extern int currentLineNumber;
 extern int currentNestingLevel;
 
+enum TokenCode {
+	Dummy,
+	Word,
+	Number,
+	Period,
+	EndOfFile,
+	Error,
+};
+
 #endif

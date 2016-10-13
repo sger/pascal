@@ -11,8 +11,7 @@ void Parser::parse() {
 	do {
 		getToken();
 
-		if (currentTokenCode != Error)
-		{
+		if (currentTokenCode != Error) {
 			currentToken->print();
 		} else {
 			sprintf(list.text, "\t%-18s %-s", ">> *** ERROR ***", currentToken->getTokenString());
@@ -29,6 +28,9 @@ void Parser::parse() {
 }
 
 void Parser::getToken() {
+	std::cout << "get token" << std::endl;
 	currentToken = pTextScanner->get();
 	currentTokenCode = currentToken->code();
+	std::cout << "currentToken " << currentToken << std::endl;
+	std::cout << "currentTokenCode " << currentTokenCode << std::endl;
 }

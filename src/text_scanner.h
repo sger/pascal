@@ -7,6 +7,7 @@
 
 class TextScanner : public Scanner {
 	TextInBuffer *const pTextInBuffer;
+	void skipWhiteSpace();
 public:
 	TextScanner(TextInBuffer *textInBuffer);
 

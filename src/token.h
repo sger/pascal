@@ -2,6 +2,7 @@
 #define token_h
 
 #include "common.h"
+#include "text_in_buffer.h"
 
 class Token {
 protected:

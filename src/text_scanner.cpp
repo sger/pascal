@@ -73,12 +73,16 @@ Token *TextScanner::get() {
 			currentToken = &numberToken;
 			break;
 		case ccQuote:
+			currentToken = &stringToken;
 			break;
 		case ccSpecial:
+			currentToken = &specialToken;
 			break;
 		case ccEndOfFile:
+			currentToken = &eofToken;
 			break;
 		default:
+			currentToken = &errorToken;
 			break;
 	}
 

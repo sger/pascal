@@ -8,7 +8,7 @@
 void Parser::parse() {
 	std::cout << "starting parser" << std::endl;
 
-	do {
+	/*do {
 		getToken();
 
 		if (currentTokenCode != tcError) {
@@ -18,7 +18,7 @@ void Parser::parse() {
 			list.putLine();
 			++errorCount;
 		}
-	} while (currentTokenCode != tcEndOfFile);
+	} while (currentTokenCode != tcEndOfFile);*/
 
 	list.putLine();
 	sprintf(list.text, "%20d source lines.", currentLineNumber);

@@ -27,7 +27,7 @@ TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffe
 	for (int i = '0'; i < '9'; i++) {
 		charCodeMap[i] = ccDigit;
 	}
-
+    // cast (unsigned char)
 	charCodeMap['+'] = ccSpecial;
 	charCodeMap['-'] = ccSpecial;
 	charCodeMap['*'] = ccSpecial;
@@ -60,4 +60,27 @@ void TextScanner::skipWhiteSpace() {
 
 Token *TextScanner::get() {
 	std::cout << "get()" << std::endl;
+
+	Token *currentToken = NULL;
+
+	skipWhiteSpace();
+
+	switch(charCodeMap[pTextInBuffer->Char()]) {
+		case ccLetter:
+			//currentToken = &wordToken;
+			break;
+		case ccDigit:
+			break;
+		case ccQuote:
+			break;
+		case ccSpecial:
+			break;
+		case ccEndOfFile:
+			break;
+		default:
+			break;
+	}
+
+	currentToken->get(*pTextInBuffer);
+	return currentToken;
 }

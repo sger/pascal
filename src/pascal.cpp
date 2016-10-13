@@ -7,20 +7,19 @@
 
 int main(int argc, char *argv[])
 {
-    /*char ch;
+    // char ch;
 
     if (argc != 2) {
 	   std::cerr << "Usage: pascal <source file>" << std::endl;
        abort(invalidCommandLineArgs);
     }
 
-    SourceBuffer sourceBuffer(argv[1]);
+    /* SourceBuffer sourceBuffer(argv[1]);
 
     do {
         ch = sourceBuffer.getChar();
     } while (ch != eofChar);*/
 
-    SourceBuffer *sourceBuffer = new SourceBuffer(argv[1]);
-    Parser parser(sourceBuffer);
+    Parser parser(new SourceBuffer(argv[1]));
     parser.parse();
 }

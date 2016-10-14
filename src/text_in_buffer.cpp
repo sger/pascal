@@ -8,7 +8,7 @@ char eofChar = 0x7F;
 int inputPosition;
 int listFlag = true;
 
-TextInBuffer::TextInBuffer(const char *pInputFileName, ErrorCode errorCode) : pFileName(new char[strlen(pInputFileName) + 1])
+TextInBuffer::TextInBuffer(const char *pInputFileName, AbortCode abortCode) : pFileName(new char[strlen(pInputFileName) + 1])
 {
 	strcpy(pFileName, pInputFileName);
 
@@ -16,7 +16,7 @@ TextInBuffer::TextInBuffer(const char *pInputFileName, ErrorCode errorCode) : pF
 
 	if (!file.good())
 	{
-		abort(errorCode);	
+		abort(abortCode);	
 	}
 }
 

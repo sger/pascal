@@ -3,11 +3,19 @@
 
 extern int errorCount;
 
-enum ErrorCode {
+enum AbortCode {
 	invalidCommandLineArgs = -1,
 	sourceFileOpenFailed = -2,
+	iFormFileOpenFailed = -3,
+	assemblyFileOpenFailed = -4,
+	tooManySyntaxErrors = -5,
+	stackOverflow = -6,
+	codeSegmentOverflow = -7,
+	nestingTooDeep = -8,
+	runtimeError = -9,
+	unimplementedFeature = -10,
 };
 
-void abort(ErrorCode errorCode);
+void abort(AbortCode errorCode);
 
 #endif

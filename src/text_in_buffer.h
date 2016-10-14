@@ -16,7 +16,7 @@ protected:
 	char *pChar;
 	virtual char getLine() = 0;
 public:
-	TextInBuffer(const char *pInputFileName, ErrorCode errorCode);
+	TextInBuffer(const char *pInputFileName, AbortCode abortCode);
 
 	virtual ~TextInBuffer()
 	{

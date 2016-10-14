@@ -18,4 +18,10 @@ enum AbortCode {
 
 void abort(AbortCode errorCode);
 
+enum ErrorCode {
+	errorNone,
+};
+
+void displayError(ErrorCode errorCode);
+
 #endif

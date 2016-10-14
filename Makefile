@@ -2,7 +2,7 @@ SRC = $(wildcard src/*.cpp)
 OBJ = ${SRC:.cpp=.o}
 
 CC = clang++
-CFLAGS = -c -Wall
+CFLAGS = -c -Wall -Wno-char-subscripts
 LDFLAGS += -lm
 
 clang = $(shell which clang 2> /dev/null)

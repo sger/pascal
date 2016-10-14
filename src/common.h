@@ -1,9 +1,6 @@
 #ifndef common_h
 #define common_h
 
-// #include <string.h>
-// #include <ctype.h>
-
 const int FALSE = 0;
 const int TRUE = 1;
 

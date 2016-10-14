@@ -11,11 +11,8 @@ void Parser::parse() {
 
 		if (currentTokenCode != tcError) {
 			currentToken->print();
-		} else {
-			sprintf(list.text, "\t%-18s %-s", ">> *** ERROR ***", currentToken->getTokenString());
-			list.putLine();
-			++errorCount;
 		}
+		
 	} while (currentTokenCode != tcEndOfFile);
 
 	list.putLine();

@@ -9,7 +9,7 @@ public:
 	ErrorToken() {
 		tokenCode = tcError;
 	}
-	virtual void get(TextInBuffer &buffer);
+	virtual void getToken(TextInBuffer &buffer);
 	virtual void print() const {}
 };
 

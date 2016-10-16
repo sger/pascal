@@ -9,7 +9,7 @@ public:
 	EOFToken() {
 		tokenCode = tcEndOfFile;
 	}
-	virtual void get(TextInBuffer &buffer) {}
+	virtual void getToken(TextInBuffer &buffer) {}
 	virtual void print() const {}
 };
 

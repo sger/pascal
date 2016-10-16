@@ -5,7 +5,7 @@
 
 #include "list_buffer.h"
 
-void NumberToken::get(TextInBuffer &buffer) {
+void NumberToken::getToken(TextInBuffer &buffer) {
 	const int maxDigitCount = 4;
     
     char  ch = buffer.Char();      // char fetched from input

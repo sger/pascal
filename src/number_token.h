@@ -9,7 +9,7 @@ public:
 	NumberToken() {
 		tokenCode = tcNumber;
 	}
-	virtual void get(TextInBuffer &buffer);
+	virtual void getToken(TextInBuffer &buffer);
 	virtual void print() const;
 };
 

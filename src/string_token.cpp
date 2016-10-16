@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void StringToken::get(TextInBuffer &buffer) {
+void StringToken::getToken(TextInBuffer &buffer) {
 
 }
 

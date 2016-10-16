@@ -5,7 +5,7 @@
 #include "list_buffer.h"
 #include "helpers.h"
 
-void WordToken::get(TextInBuffer &buffer) {
+void WordToken::getToken(TextInBuffer &buffer) {
 	char ch = buffer.Char();
 	char *ps = tokenString;
 

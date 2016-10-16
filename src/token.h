@@ -38,6 +38,9 @@ public:
 
 	virtual void get(TextInBuffer &buffer) = 0;
 	virtual void print() const = 0;
+	virtual int isDelimiter() const {
+		return false;
+	}
 };
 
 #endif

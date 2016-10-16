@@ -20,7 +20,7 @@ public:
 		tokenString[0] = '\0';
 	}
 
-	TokenCode code() const {
+	TokenCode getTokenCode() const {
 		return tokenCode;
 	}
 

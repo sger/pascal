@@ -91,7 +91,7 @@ void NumberToken::getToken(TextInBuffer &buffer) {
 
     // Calculation of the exponent value
     exponent = int(eValue) - decimalPlaces;
-    if ((exponent + wholePlaces < -maxExponent) || (exponent + wholePlaces < -maxExponent))
+    if ((exponent + wholePlaces < -maxExponent) || (exponent + wholePlaces > maxExponent))
     {
         displayError(errorRealOutOfRange);
         return;

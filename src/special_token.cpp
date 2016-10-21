@@ -9,10 +9,6 @@ void SpecialToken::getToken(TextInBuffer &buffer) {
     char *ps = tokenString;
 
     *ps++ = ch;
-    // *ps = '\0';
-    // buffer.getChar();
-
-    // tokenCode = (ch == '.') ? tcPeriod : tcError;
 
     switch(ch) {
     	case '^':

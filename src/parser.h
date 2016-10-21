@@ -5,20 +5,23 @@
 #include "text_scanner.h"
 #include "token.h"
 #include "common.h"
+#include "compact_list_buffer.h"
 
 class Parser {
 	TextScanner *const pTextScanner;
 	Token *currentToken;
 	TokenCode currentTokenCode;
+	CompactListBuffer *const pCompactListBuffer;
 
 	void getToken() {
 		currentToken = pTextScanner->get();
 		currentTokenCode = currentToken->getTokenCode();
 	}
 public:
-	Parser(TextInBuffer *textInBuffer) : pTextScanner(new TextScanner(textInBuffer)) {}
+	Parser(TextInBuffer *textInBuffer) : pTextScanner(new TextScanner(textInBuffer)), pCompactListBuffer(new CompactListBuffer) {}
 	~Parser() {
 		delete pTextScanner;
+		delete pCompactListBuffer;
 	}
 
 	void parse();

@@ -21,3 +21,36 @@ void Parser::parse() {
 	sprintf(list.text, "%20d syntax errors.", errorCount);
 	list.putLine();
 }
+
+// Compact representation of the code
+/*void Parser::parse() {
+
+	int currrentTokenIsDelimiter;
+	int previousTokenIsDelimiter = true;
+
+	do {
+		getToken();
+
+		if (currentTokenCode == tcEndOfFile)
+		{
+			displayError(errorUnexpectedEndOfFile);
+			break;
+		}
+
+		if (currentTokenCode != tcError) {
+			currrentTokenIsDelimiter = currentToken->isDelimiter();
+		
+			if (!previousTokenIsDelimiter && !currrentTokenIsDelimiter)
+			{
+				pCompactListBuffer->putBlank();
+			}
+
+			pCompactListBuffer->put(currentToken->getTokenString());
+		} else {
+			displayError(errorUnrecognizable);
+		}
+		
+	} while (currentTokenCode != tcPeriod);
+
+	pCompactListBuffer->putLine();
+}*/

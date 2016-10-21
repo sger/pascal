@@ -15,6 +15,8 @@ public:
 		textLength = 0;
 	}
 
+	virtual ~CompactListBuffer() {}
+
 	void putBlank();
 	void put(const char *pString);
 	void putLine();

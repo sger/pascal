@@ -125,6 +125,13 @@ void WordToken::checkForReservedWord() {
 }
 
 void WordToken::print() const {
-	sprintf(list.text, "\t%-18s %-s", ">> word:", tokenString);
+	if (tokenCode == tcIdentifier)
+	{
+		sprintf(list.text, "\t%-18s %-s", ">> word:", tokenString);
+	} 
+	else
+	{
+		sprintf(list.text, "\t%-18s %-s", ">> word:", tokenString);
+	}
     list.putLine();
 }

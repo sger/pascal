@@ -105,7 +105,23 @@ void WordToken::getToken(TextInBuffer &buffer) {
 }
 
 void WordToken::checkForReservedWord() {
+	int len = strlen(tokenString);
 
+	ReservedWord *pReservedWord;
+
+	tokenCode = tcIdentifier;
+
+	if (( len >= minReswordLen) && (len <= maxResWordLen)) 
+	{
+		for (pReservedWord = rwTable[len]; pReservedWord->pString; ++pReservedWord)
+		{
+			if (strcmp(tokenString, pReservedWord->pString) == 0)
+			{
+				tokenCode = pReservedWord->tokenCode;
+				break;
+			}
+		}
+	}
 }
 
 void WordToken::print() const {

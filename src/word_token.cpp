@@ -18,6 +18,73 @@ struct ReservedWord {
 
 static ReservedWord rw2[] = {
 	{(char *)"do", tcDO},
+	{(char *)"if", tcIF},
+	{(char *)"in", tcIN},
+	{(char *)"of", tcOF},
+	{(char *)"or", tcOR},
+	{(char *)"to", tcTO},
+	{NULL},
+};
+
+static ReservedWord rw3[] = {
+	{(char *)"and", tcAND},
+	{(char *)"div", tcDIV},
+	{(char *)"end", tcEND},
+	{(char *)"for", tcFOR},
+	{(char *)"mod", tcMOD},
+	{(char *)"nil", tcNIL},
+	{(char *)"not", tcNOT},
+	{(char *)"set", tcSET},
+	{(char *)"var", tcVAR},
+	{NULL},
+};
+
+static ReservedWord rw4[] = {
+	{(char *)"case", tcCASE},
+	{(char *)"else", tcELSE},
+	{(char *)"file", tcFILE},
+	{(char *)"goto", tcGOTO},
+	{(char *)"then", tcTHEN},
+	{(char *)"type", tcTYPE},
+	{(char *)"with", tcWITH},
+	{NULL},
+};
+
+static ReservedWord rw5[] = {
+	{(char *)"array", tcARRAY},
+	{(char *)"begin", tcBEGIN},
+	{(char *)"const", tcCONST},
+	{(char *)"label", tcLABEL},
+	{(char *)"until", tcUNTIL},
+	{(char *)"while", tcWHILE},
+	{NULL},
+};
+
+static ReservedWord rw6[] = {
+	{(char *)"downto", tcDOWNTO},
+	{(char *)"packed", tcPACKED},
+	{(char *)"record", tcRECORD},
+	{(char *)"repeat", tcREPEAT},
+	{NULL},
+};
+
+static ReservedWord rw7[] = {
+	{(char *)"program", tcPROGRAM},
+	{NULL},
+};
+
+static ReservedWord rw8[] = {
+	{(char *)"function", tcFUNCTION},
+	{NULL},
+};
+
+static ReservedWord rw9[] = {
+	{(char *)"procedure", tcPROCEDURE},
+	{NULL},
+};
+
+static ReservedWord *rwTable[] = {
+	NULL, NULL, rw2, rw3, rw4, rw5, rw6, rw7, rw8, rw9,
 };
 
 void WordToken::getToken(TextInBuffer &buffer) {

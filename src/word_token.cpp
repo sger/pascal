@@ -21,17 +21,20 @@ static ReservedWord rw2[] = {
 };
 
 void WordToken::getToken(TextInBuffer &buffer) {
+	extern CharCode charCodeMap[];
+
 	char ch = buffer.Char();
 	char *ps = tokenString;
 
 	do {
 		*ps++ = ch;
 		ch = buffer.getChar();
-	} while( (charCodeMap[ch] == ccLetter) || (charCodeMap[ch] == ccDigit));
+	} while( (charCodeMap[ch] == ccLetter) || (charCodeMap[ch] == ccDigit) );
 
 	*ps = '\0';
 	strlwr(tokenString);
-	tokenCode = tcWord;
+
+	checkForReservedWord();
 }
 
 void WordToken::checkForReservedWord() {

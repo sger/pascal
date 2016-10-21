@@ -5,6 +5,12 @@
 #include "text_in_buffer.h"
 
 class NumberToken : public Token {
+	char ch;
+	char *ps;
+	int digitCount;
+	int countErrorFlag;
+
+	int accumulateValue(TextInBuffer &buffer, float &value, ErrorCode errorCode);
 public:
 	NumberToken() {
 		tokenCode = tcNumber;

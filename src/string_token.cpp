@@ -9,7 +9,7 @@ void StringToken::getToken(TextInBuffer &buffer) {
 	char ch;
 	char *ps = tokenString;
 
-	*ps = '\'';
+	*ps++ = '\'';
 
 	ch = buffer.getChar();
 

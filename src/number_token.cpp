@@ -2,38 +2,160 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #include "list_buffer.h"
 
 void NumberToken::getToken(TextInBuffer &buffer) {
-	const int maxDigitCount = 4;
-    
-    char  ch = buffer.Char();      // char fetched from input
-    char *ps = tokenString;
-    int   digitCount     = 0;
-    int   countErrorFlag = false;  // true if too many digits,
-				   //   else false
+    const int maxInteger = 32767;
+    const int maxExponent = 37;
 
-    //--Accumulate the dataValue as long as the total allowable
-    //--number of digits has not been exceeded.
-    dataValue.integer = 0;
+    float numValue = 0.0;
+
+    int wholePlaces = 0;
+    int decimalPlaces = 0;
+    char exponentSign = '+';
+    float eValue = 0.0;
+    int exponent = 0;
+    int sawDotDotFlag = false;
+
+    ch = buffer.Char();
+    ps = tokenString;
+    digitCount = 0;
+    countErrorFlag = false;
+    tokenCode = tcError;
+    dataType = dtInteger;
+
+    if (!accumulateValue(buffer, numValue, errorInvalidNumber))
+    {
+        return;
+    }
+
+    wholePlaces = digitCount;
+
+    if (ch == '.')
+    {
+        ch = buffer.getChar();
+
+        if (ch == '.')
+        {
+            sawDotDotFlag = true;
+            buffer.putBackChar();
+        }
+        else
+        {
+            dataType = dtReal;
+            *ps++ = '.';
+
+            if (!accumulateValue(buffer, numValue, errorInvalidFraction))
+            {
+                return;
+            }
+
+            decimalPlaces = digitCount - wholePlaces;
+       }
+    }
+
+    // exponent part
+    if (!sawDotDotFlag && ((ch == 'E') || (ch == 'e')))
+    {
+        dataType = dtReal;
+        *ps++ = ch;
+        ch = buffer.getChar();
+
+        if ((ch == '+') || (ch == '-'))
+        {
+            *ps++ = exponentSign = ch;
+            ch = buffer.getChar();
+        }
+
+        digitCount = 0;
+
+        if (!accumulateValue(buffer, numValue, errorInvalidExponent))
+        {
+            return;
+        }
+
+        if (exponentSign == '-')
+        {
+            eValue = -eValue;
+        }
+    }
+
+    // Tracking many digits
+    if (countErrorFlag)
+    {
+        displayError(errorTooManyDigits);
+        return;
+    }
+
+    // Calculation of the exponent value
+    exponent = int(eValue) - decimalPlaces;
+    if ((exponent + wholePlaces < -maxExponent) || (exponent + wholePlaces < -maxExponent))
+    {
+        displayError(errorRealOutOfRange);
+        return;
+    }
+
+    if (exponent != 0)
+    {
+        numValue  *= float(pow(10, exponent));
+    }
+
+    if (dataType == dtInteger)
+    {
+        if ((numValue < -maxInteger) || (numValue > maxInteger))
+        {
+            displayError(errorIntegerOutOfRange);
+            return;
+        }
+        dataValue.integer = int(numValue);
+    }
+    else
+    {
+        dataValue.real = numValue;
+    }
+
+    *ps = '\0';
+    tokenCode = tcNumber;
+}
+
+int NumberToken::accumulateValue(TextInBuffer &buffer, float &value, ErrorCode errorCode) {
+
+    const int maxDigitCount = 20;
+
+    if (charCodeMap[ch] != ccDigit)
+    {
+        displayError(errorCode);
+        return false;
+    }
+
     do {
-	*ps++ = ch;
+        *ps++ = ch;
 
-	//--Shift left and add.
-	if (++digitCount <= maxDigitCount) {
-	    dataValue.integer = 10*dataValue.integer + (ch - '0');
-	}
-	else countErrorFlag = true;  // too many digits
+        if (++digitCount <= maxDigitCount)
+        {
+            value = 10 * value + (ch - '0');
+        }
+        else
+        {
+            countErrorFlag = true;
+        }
 
-	ch = buffer.getChar();
+        ch = buffer.getChar();
     } while (charCodeMap[ch] == ccDigit);
 
-    *ps  = '\0';
-    tokenCode = countErrorFlag ? tcError : tcNumber;
+    return true;
 }
 
 void NumberToken::print() const {
-	sprintf(list.text, "\t%-18s =%d", ">> number:", dataValue.integer);
+    if (dataType == dtInteger)
+    {
+        sprintf(list.text, "\t%-18s =%d", ">> integer:", dataValue.integer);
+    }
+    else
+    {
+        sprintf(list.text, "\t%-18s =%g", ">> real:", dataValue.real);
+    }
     list.putLine();
 }

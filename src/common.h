@@ -15,7 +15,7 @@ enum TokenCode {
 
 	// Symbols
 	tcUpArrow, tcStar, tcLParen, tcRParen, tcMinus, tcPlus,
-	tcEqual, tlLBracket, tcRBracket, tcColon, tcSemicolon, tcLt,
+	tcEqual, tcLBracket, tcRBracket, tcColon, tcSemicolon, tcLt,
 	tcGt, tcComma, tcPeriod, tcSlash, tcColonEqual, tcLe, tcGe,
 	tcNe, tcDotDot,
 

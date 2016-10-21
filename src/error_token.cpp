@@ -6,5 +6,8 @@
 void ErrorToken::getToken(TextInBuffer &buffer) {
 	tokenString[0] = buffer.Char();
 	tokenString[1] = '\0';
+
 	buffer.getChar();
+	displayError(errorUnrecognizable);
 }
+

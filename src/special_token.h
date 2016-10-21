@@ -8,6 +8,9 @@ class SpecialToken : public Token {
 public:
 	virtual void getToken(TextInBuffer &buffer);
 	virtual void print() const;
+	virtual int isDelimiter() const {
+		return true;
+	}
 };
 
 #endif

@@ -8,12 +8,22 @@ extern int currentLineNumber;
 extern int currentNestingLevel;
 
 enum TokenCode {
-	tcDummy,
-	tcWord,
-	tcNumber,
-	tcPeriod,
-	tcEndOfFile,
-	tcError,
+	tcDummy, 
+
+	// Special Types
+	tcNumber, tcEndOfFile, tcError, tcIdentifier, tcString,
+
+	// Symbols
+	tcUpArrow, tcStar, tcLParen, tcRParen, tcMinus, tcPlus,
+	tcEqual, tlLBracket, tcRBracket, tcColon, tcSemicolon, tcLt,
+	tcGt, tcComma, tcPeriod, tcSlash, tcColonEqual, tcLe, tcGe,
+	tcNe, tcDotDot,
+
+	tcDO, tcAND, tcARRAY, tcBEGIN, tcCASE, tcCONST, tcDIV,
+	tcDOWNTO, tcELSE, tcEND, tcFILE, tcFOR, tcFUNCTION,
+	tcGOTO, tcIF, tcIN, tcLABEL, tcMOD, tcNIL, tcNOT, tcOF, tcOR,
+	tcPACKED, tcPROCEDURE, tcPROGRAM, tcRECORD, tcREPEAT, tcSET,
+	tcTHEN, tcTO, tcTYPE, tcUNTIL, tcVAR, tcWHILE, tcWITH,
 };
 
 enum CharCode {

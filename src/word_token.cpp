@@ -4,6 +4,21 @@
 #include <string.h>
 #include "list_buffer.h"
 #include "helpers.h"
+#include "common.h"
+
+const int minReswordLen = 2;
+const int maxResWordLen = 9;
+
+struct ReservedWord {
+	char *pString;
+	TokenCode tokenCode;
+};
+
+// (char*)"do"
+
+static ReservedWord rw2[] = {
+	{(char *)"do", tcDO},
+};
 
 void WordToken::getToken(TextInBuffer &buffer) {
 	char ch = buffer.Char();
@@ -17,6 +32,10 @@ void WordToken::getToken(TextInBuffer &buffer) {
 	*ps = '\0';
 	strlwr(tokenString);
 	tokenCode = tcWord;
+}
+
+void WordToken::checkForReservedWord() {
+
 }
 
 void WordToken::print() const {

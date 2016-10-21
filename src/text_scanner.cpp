@@ -54,6 +54,7 @@ TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffe
 	charCodeMap[eofChar] = ccEndOfFile;
 }
 
+// TODO
 void TextScanner::skipWhiteSpace() {
 	char ch = pTextInBuffer->Char();
 

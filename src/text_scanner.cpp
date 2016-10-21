@@ -57,9 +57,28 @@ TextScanner::TextScanner(TextInBuffer *textInBuffer) : pTextInBuffer(textInBuffe
 void TextScanner::skipWhiteSpace() {
 	char ch = pTextInBuffer->Char();
 
-	while(charCodeMap[ch] == ccWhiteSpace) {
-		ch = pTextInBuffer->getChar();
-	}
+	do {
+
+		if (charCodeMap[ch] == ccWhiteSpace)
+		{
+			ch = pTextInBuffer->getChar();
+		}
+		else if (ch == '{') {
+
+			do {
+				ch = pTextInBuffer->getChar();
+			} while ((ch != '}') && (ch != eofChar));
+
+			if (ch != eofChar)
+			{
+				ch = pTextInBuffer->getChar();
+			} 
+			else
+			{
+				displayError(errorUnexpectedEndOfFile);
+			}
+		}
+	} while(charCodeMap[ch] == ccWhiteSpace || (ch == '{'));
 }
 
 Token *TextScanner::get() {

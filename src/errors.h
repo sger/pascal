@@ -2,6 +2,8 @@
 #define errors_h
 
 extern int errorCount;
+extern int errorArrowFlag;
+extern int errorArrowOffset;
 
 enum AbortCode {
 	invalidCommandLineArgs = -1,

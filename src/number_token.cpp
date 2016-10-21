@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #include "list_buffer.h"
 
@@ -56,7 +57,67 @@ void NumberToken::getToken(TextInBuffer &buffer) {
     }
 
     // exponent part
+    if (!sawDotDotFlag && ((ch == 'E') || (ch == 'e')))
+    {
+        dataType = dtReal;
+        *ps++ = ch;
+        ch = buffer.getChar();
 
+        if ((ch == '+') || (ch == '-'))
+        {
+            *ps++ = exponentSign = ch;
+            ch = buffer.getChar();
+        }
+
+        digitCount = 0;
+
+        if (!accumulateValue(buffer, numValue, errorInvalidExponent))
+        {
+            return;
+        }
+
+        if (exponentSign == '-')
+        {
+            eValue = -eValue;
+        }
+    }
+
+    // Tracking many digits
+    if (countErrorFlag)
+    {
+        displayError(errorTooManyDigits);
+        return;
+    }
+
+    // Calculation of the exponent value
+    exponent = int(eValue) - decimalPlaces;
+    if ((exponent + wholePlaces < -maxExponent) || (exponent + wholePlaces < -maxExponent))
+    {
+        displayError(errorRealOutOfRange);
+        return;
+    }
+
+    if (exponent != 0)
+    {
+        numValue  *= float(pow(10, exponent));
+    }
+
+    if (dataType == dtInteger)
+    {
+        if ((numValue < -maxInteger) || (numValue > maxInteger))
+        {
+            displayError(errorIntegerOutOfRange);
+            return;
+        }
+        dataValue.integer = int(numValue);
+    }
+    else
+    {
+        dataValue.real = numValue;
+    }
+
+    *ps = '\0';
+    tokenCode = tcNumber;
 }
 
 int NumberToken::accumulateValue(TextInBuffer &buffer, float &value, ErrorCode errorCode) {
@@ -88,6 +149,13 @@ int NumberToken::accumulateValue(TextInBuffer &buffer, float &value, ErrorCode e
 }
 
 void NumberToken::print() const {
-	sprintf(list.text, "\t%-18s =%d", ">> number:", dataValue.integer);
+    if (dataType == dtInteger)
+    {
+        sprintf(list.text, "\t%-18s =%d", ">> integer:", dataValue.integer);
+    }
+    else
+    {
+        sprintf(list.text, "\t%-18s =%g", ">> real:", dataValue.real);
+    }
     list.putLine();
 }

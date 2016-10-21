@@ -11,6 +11,9 @@ public:
 	}
 	virtual void getToken(TextInBuffer &buffer);
 	virtual void print() const;
+	virtual int isDelimiter() const {
+		return false;
+	}
 };
 
 #endif

@@ -20,6 +20,8 @@ void abort(AbortCode errorCode);
 
 enum ErrorCode {
 	errorNone,
+	errorUnexpectedEndOfFile,
+	errorUnrecognizable
 };
 
 void displayError(ErrorCode errorCode);

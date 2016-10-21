@@ -21,7 +21,9 @@ void abort(AbortCode errorCode);
 enum ErrorCode {
 	errorNone,
 	errorUnexpectedEndOfFile,
-	errorUnrecognizable
+	errorUnrecognizable,
+	errorInvalidNumber,
+	errorInvalidFraction,
 };
 
 void displayError(ErrorCode errorCode);

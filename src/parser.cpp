@@ -23,6 +23,7 @@ void Parser::parse() {
 }
 
 // Compact representation of the code
+// Uncomment this parse function to enable it.
 /*void Parser::parse() {
 
 	int currrentTokenIsDelimiter;

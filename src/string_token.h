@@ -6,7 +6,7 @@
 
 class StringToken : public Token {
 public:
-	virtual void getToken(TextInBuffer &buffer);
+	virtual void nextToken(TextInBuffer &buffer);
 	virtual void print() const;
 	virtual int isDelimiter() const {
 		return true;

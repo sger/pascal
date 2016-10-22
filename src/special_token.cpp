@@ -4,7 +4,8 @@
 #include <string.h>
 #include "list_buffer.h"
 
-void SpecialToken::getToken(TextInBuffer &buffer) {
+// refactor this to nextToken
+void SpecialToken::nextToken(TextInBuffer &buffer) {
 	char  ch = buffer.Char();
     char *ps = tokenString;
 

@@ -109,6 +109,6 @@ Token *TextScanner::get() {
 			break;
 	}
 
-	currentToken->getToken(*pTextInBuffer);
+	currentToken->nextToken(*pTextInBuffer);
 	return currentToken;
 }

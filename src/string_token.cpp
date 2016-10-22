@@ -5,7 +5,7 @@
 
 #include "list_buffer.h"
 
-void StringToken::getToken(TextInBuffer &buffer) {
+void StringToken::nextToken(TextInBuffer &buffer) {
 	char ch;
 	char *ps = tokenString;
 

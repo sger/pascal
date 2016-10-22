@@ -87,7 +87,7 @@ static ReservedWord *rwTable[] = {
 	NULL, NULL, rw2, rw3, rw4, rw5, rw6, rw7, rw8, rw9,
 };
 
-void WordToken::getToken(TextInBuffer &buffer) {
+void WordToken::nextToken(TextInBuffer &buffer) {
 	extern CharCode charCodeMap[];
 
 	char ch = buffer.Char();

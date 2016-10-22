@@ -36,7 +36,7 @@ public:
 		return tokenString;
 	}
 
-	virtual void getToken(TextInBuffer &buffer) = 0;
+	virtual void nextToken(TextInBuffer &buffer) = 0;
 	virtual void print() const = 0;
 	virtual int isDelimiter() const {
 		return false;

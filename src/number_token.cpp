@@ -6,7 +6,7 @@
 
 #include "list_buffer.h"
 
-void NumberToken::getToken(TextInBuffer &buffer) {
+void NumberToken::nextToken(TextInBuffer &buffer) {
     const int maxInteger = 32767;
     const int maxExponent = 37;
 

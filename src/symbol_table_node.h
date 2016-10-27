@@ -1,5 +1,7 @@
-#ifndef symbol_table_h
-#define symbol_table_h
+#ifndef symbol_table_node_h
+#define symbol_table_node_h
+
+extern int xrefFlag;
 
 class SymbolTableNode {
 	SymbolTableNode *leftNode, *rightNode;
@@ -7,7 +9,6 @@ class SymbolTableNode {
 	short symbolTableIndex;
 	short nodeIndex;
 
-	friend class SymbolTable;
 public:
 	float value;
 
@@ -26,11 +27,11 @@ public:
 		return pSymbolString;
 	}
 
-	short *getSymbolTableIndex() const {
+	short getSymbolTableIndex() const {
 		return symbolTableIndex;
 	}
 
-	short *getNodeIndex() const {
+	short getNodeIndex() const {
 		return nodeIndex;
 	}
 

@@ -6,6 +6,7 @@
 #include "token.h"
 #include "common.h"
 #include "compact_list_buffer.h"
+#include "symbol_table_node.h"
 
 class Parser {
 	TextScanner *const pTextScanner;

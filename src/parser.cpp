@@ -5,7 +5,36 @@
 #include "common.h"
 #include "errors.h"
 
+// Parser symbol table
 void Parser::parse() {
+	do {
+		getToken();
+
+		if (currentTokenCode != tcEndOfFile) {
+			displayError(errorUnexpectedEndOfFile);
+			break;
+		}
+
+		if (currentTokenCode == tcIdentifier)
+		{
+			SymbolTableNode *pNode = globalSymbolTable.search(currentToken->getTokenString());
+
+			if (!pNode)
+			{
+				pNode = globalSymbolTable.enter(currentToken->getTokenString());
+			}
+		}
+		
+	} while (currentTokenCode != tcPeriod);
+
+	list.putLine();
+	sprintf(list.text, "%20d source lines.", currentLineNumber);
+	list.putLine();
+	sprintf(list.text, "%20d syntax errors.", errorCount);
+	list.putLine();
+}
+
+/*void Parser::parse() {
 	do {
 		getToken();
 
@@ -20,7 +49,7 @@ void Parser::parse() {
 	list.putLine();
 	sprintf(list.text, "%20d syntax errors.", errorCount);
 	list.putLine();
-}
+}*/
 
 // Compact representation of the code
 // Uncomment this parse function to enable it.

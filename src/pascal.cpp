@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     if (xrefFlag)
     {
     	list.putLine();
-    	list.putLine("Cross-Reference");
+    	list.putLine("***** Cross-Reference *****");
     	list.putLine();
     	globalSymbolTable.print();
     }

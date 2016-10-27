@@ -10,7 +10,7 @@ void Parser::parse() {
 	do {
 		getToken();
 
-		if (currentTokenCode != tcEndOfFile) {
+		if (currentTokenCode == tcEndOfFile) {
 			displayError(errorUnexpectedEndOfFile);
 			break;
 		}

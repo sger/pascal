@@ -1,11 +1,15 @@
 #ifndef common_h
 #define common_h
 
+#include "symbol_table.h"
+
 const int FALSE = 0;
 const int TRUE = 1;
 
 extern int currentLineNumber;
 extern int currentNestingLevel;
+
+extern SymbolTable globalSymbolTable;
 
 enum TokenCode {
 	tcDummy, 

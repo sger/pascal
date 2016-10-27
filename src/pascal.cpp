@@ -4,17 +4,33 @@
 #include "source_buffer.h"
 #include "text_in_buffer.h"
 #include "parser.h"
+#include "list_buffer.h"
+#include "symbol_table.h"
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2) {
-	   std::cerr << "Usage: pascal <source file>" << std::endl;
+	extern int xrefFlag;
+
+    if ((argc != 2) && (argc != 3)) {
+	   std::cerr << "Usage: pascal <source file> [-x]" << std::endl;
        abort(invalidCommandLineArgs);
     }
 
     //errorArrowFlag = false;
     //listFlag = false;
 
+    xrefFlag = (argc == 3) && (strcmp(argv[2], "x") == 0);
+
     Parser parser(new SourceBuffer(argv[1]));
     parser.parse();
+
+    std::cout << xrefFlag << std::endl;
+
+    if (xrefFlag)
+    {
+    	list.putLine();
+    	list.putLine("Cross-Reference");
+    	list.putLine();
+    	globalSymbolTable.print();
+    }
 }

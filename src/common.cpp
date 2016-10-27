@@ -2,3 +2,5 @@
 
 int currentNestingLevel = 0;
 int currentLineNumber   = 0;
+
+SymbolTable globalSymbolTable;

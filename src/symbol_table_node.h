@@ -1,6 +1,8 @@
 #ifndef symbol_table_node_h
 #define symbol_table_node_h
 
+#include "line_num_list.h"
+
 extern int xrefFlag;
 
 class SymbolTableNode {
@@ -8,6 +10,10 @@ class SymbolTableNode {
 	char *pSymbolString;
 	short symbolTableIndex;
 	short nodeIndex;
+
+	LineNumList *pLineNumList;
+
+	friend class SymbolTable;
 
 public:
 	float value;

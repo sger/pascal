@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
     Parser parser(new SourceBuffer(argv[1]));
     parser.parse();
 
-    std::cout << xrefFlag << std::endl;
-
     if (xrefFlag)
     {
     	list.putLine();

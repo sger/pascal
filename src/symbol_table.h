@@ -32,7 +32,6 @@ public:
 	}
 
 	void print() const {
-		std::cout << "print()" << std::endl;
 		rootNode->print();
 	}
 };

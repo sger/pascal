@@ -16,16 +16,12 @@ int main(int argc, char *argv[])
        abort(invalidCommandLineArgs);
     }
 
-    //errorArrowFlag = false;
-    //listFlag = false;
-
-    xrefFlag = (argc == 3) && (strcmp(argv[2], "x") == 0);
+    xrefFlag = (argc == 3) && (strcmp(argv[2], "-x") == 0);
 
     Parser parser(new SourceBuffer(argv[1]));
     parser.parse();
 
-    if (xrefFlag)
-    {
+    if (xrefFlag) {
     	list.putLine();
     	list.putLine("***** Cross-Reference *****");
     	list.putLine();

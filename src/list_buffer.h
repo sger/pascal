@@ -33,6 +33,10 @@ public:
 		sprintf(text, "%4d %d: %s", lineNumber, nestingLevel, pText);
 		putLine();
 	}
+
+	void hello() {
+		
+	}
 };
 
 extern ListBuffer list;

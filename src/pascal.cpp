@@ -6,6 +6,7 @@
 #include "parser.h"
 #include "list_buffer.h"
 #include "symbol_table.h"
+#include "ticode.h"
 
 int main(int argc, char *argv[])
 {

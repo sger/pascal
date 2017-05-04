@@ -6,7 +6,8 @@ This version of Pascal is based on book [Writing Compilers and Interpreters: A S
 
 To build Pascal, simply run:
 
-  $ make
+    $ make
+    $ ./pascal examples/hello.pas
 
 ## Status
 

@@ -5,33 +5,40 @@
 
 #include "symbol_table_node.h"
 
-class SymbolTable {
+class SymbolTable
+{
 	SymbolTableNode *rootNode;
 	short nodeCount;
 	short symbolTableIndex;
+
 public:
-	SymbolTable() {
+	SymbolTable()
+	{
 		rootNode = NULL;
 		nodeCount = 0;
 		symbolTableIndex = 0;
 	}
 
-	~SymbolTable() {
+	~SymbolTable()
+	{
 		delete rootNode;
 	}
 
 	SymbolTableNode *search(const char *pString) const;
 	SymbolTableNode *enter(const char *pString);
 
-	SymbolTableNode *getRootNode() const {
+	SymbolTableNode *getRootNode() const
+	{
 		return rootNode;
 	}
 
-	int getNodeCount() const {
+	int getNodeCount() const
+	{
 		return nodeCount;
 	}
 
-	void print() const {
+	void print() const
+	{
 		rootNode->print();
 	}
 };

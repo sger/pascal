@@ -2,11 +2,13 @@
 
 int xrefFlag = true;
 
-SymbolTableNode *SymbolTable::search(const char *pString) const {
+SymbolTableNode *SymbolTable::search(const char *pString) const
+{
 	SymbolTableNode *pNode = rootNode;
 	int comp;
 
-	while (pNode) {
+	while (pNode)
+	{
 		comp = strcmp(pString, pNode->pSymbolString);
 		if (comp == 0)
 		{
@@ -24,12 +26,13 @@ SymbolTableNode *SymbolTable::search(const char *pString) const {
 	return pNode;
 }
 
-
-SymbolTableNode *SymbolTable::enter(const char *pString) {
+SymbolTableNode *SymbolTable::enter(const char *pString)
+{
 	SymbolTableNode *pNode;
 	SymbolTableNode **ppNode = &rootNode;
 
-	while ((pNode = *ppNode) != NULL) {
+	while ((pNode = *ppNode) != NULL)
+	{
 		int comp = strcmp(pString, pNode->pSymbolString);
 
 		if (comp == 0)
@@ -37,7 +40,7 @@ SymbolTableNode *SymbolTable::enter(const char *pString) {
 			return pNode;
 		}
 
-		ppNode= comp < 0 ? &(pNode->leftNode) : &(pNode->rightNode);
+		ppNode = comp < 0 ? &(pNode->leftNode) : &(pNode->rightNode);
 	}
 
 	pNode = new SymbolTableNode(pString);

@@ -10,11 +10,12 @@
 
 int main(int argc, char *argv[])
 {
-	extern int xrefFlag;
+    extern int xrefFlag;
 
-    if ((argc != 2) && (argc != 3)) {
-	   std::cerr << "Usage: pascal <source file> [-x]" << std::endl;
-       abort(invalidCommandLineArgs);
+    if ((argc != 2) && (argc != 3))
+    {
+        std::cerr << "Usage: pascal <source file> [-x]" << std::endl;
+        abort(invalidCommandLineArgs);
     }
 
     xrefFlag = (argc == 3) && (strcmp(argv[2], "-x") == 0);
@@ -22,10 +23,11 @@ int main(int argc, char *argv[])
     Parser parser(new SourceBuffer(argv[1]));
     parser.parse();
 
-    if (xrefFlag) {
-    	list.putLine();
-    	list.putLine("***** Cross-Reference *****");
-    	list.putLine();
-    	globalSymbolTable.print();
+    if (xrefFlag)
+    {
+        list.putLine();
+        list.putLine("***** Cross-Reference *****");
+        list.putLine();
+        globalSymbolTable.print();
     }
 }

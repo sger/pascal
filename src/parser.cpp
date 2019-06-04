@@ -6,11 +6,14 @@
 #include "errors.h"
 
 // Parser symbol table
-void Parser::parse() {
-	do {
+void Parser::parse()
+{
+	do
+	{
 		getToken();
 
-		if (currentTokenCode == tcEndOfFile) {
+		if (currentTokenCode == tcEndOfFile)
+		{
 			displayError(errorUnexpectedEndOfFile);
 			break;
 		}
@@ -24,7 +27,7 @@ void Parser::parse() {
 				pNode = globalSymbolTable.enter(currentToken->getTokenString());
 			}
 		}
-		
+
 	} while (currentTokenCode != tcPeriod);
 
 	list.putLine();

@@ -10,7 +10,8 @@ void ListBuffer::printPageHeader()
 {
 	const char formFeedChar = '\f';
 
-	std::cout << formFeedChar << "Page " << ++pageNumber << "	" << pSourceFileName << "	" << date << std::endl << std::endl;
+	std::cout << formFeedChar << "Page " << ++pageNumber << "	" << pSourceFileName << "	" << date << std::endl
+			  << std::endl;
 
 	lineCount = 0;
 }
@@ -24,16 +25,17 @@ void ListBuffer::initialize(const char *pFileName)
 	strcpy(pSourceFileName, pFileName);
 
 	time_t timer;
-    time(&timer);
-    strcpy(date, asctime(localtime(&timer)));
-    date[strlen(date) - 1] = '\0';  
+	time(&timer);
+	strcpy(date, asctime(localtime(&timer)));
+	date[strlen(date) - 1] = '\0';
 
-    printPageHeader();
+	printPageHeader();
 }
 
 void ListBuffer::putLine()
 {
-	if (listFlag && (lineCount == maxLinesPerPage)) {
+	if (listFlag && (lineCount == maxLinesPerPage))
+	{
 		printPageHeader();
 	}
 

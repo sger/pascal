@@ -2,15 +2,18 @@
 
 #include "list_buffer.h"
 
-LineNumList::~LineNumList() {
-	while(head) {
+LineNumList::~LineNumList()
+{
+	while (head)
+	{
 		LineNumNode *pNode = head;
 		head = head->next;
 		delete pNode;
 	}
 }
 
-void LineNumList::update() {
+void LineNumList::update()
+{
 	if (tail && (tail->number == currentLineNumber))
 	{
 		return;
@@ -20,7 +23,8 @@ void LineNumList::update() {
 	tail = tail->next;
 }
 
-void LineNumList::print(int newLineFlag, int indent) const {
+void LineNumList::print(int newLineFlag, int indent) const
+{
 	const int maxLineNumberPrintWidth = 4;
 	const int maxLineNumbersPerLine = 10;
 

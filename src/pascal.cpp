@@ -20,8 +20,9 @@ int main(int argc, char *argv[])
 
     xrefFlag = (argc == 3) && (strcmp(argv[2], "-x") == 0);
 
-    Parser parser(new SourceBuffer(argv[1]));
-    parser.parse();
+    Parser *parser = new Parser(new SourceBuffer(argv[1]));
+    parser->parse();
+    delete parser;
 
     if (xrefFlag)
     {

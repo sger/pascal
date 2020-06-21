@@ -5,23 +5,25 @@ extern int errorCount;
 extern int errorArrowFlag;
 extern int errorArrowOffset;
 
-enum AbortCode {
-	invalidCommandLineArgs = -1,
-	sourceFileOpenFailed = -2,
-	iFormFileOpenFailed = -3,
-	assemblyFileOpenFailed = -4,
-	tooManySyntaxErrors = -5,
-	stackOverflow = -6,
-	codeSegmentOverflow = -7,
-	nestingTooDeep = -8,
-	runtimeerroror = -9,
-	unimplementedFeature = -10,
+enum AbortCode
+{
+    invalidCommandLineArgs = -1,
+    sourceFileOpenFailed = -2,
+    iFormFileOpenFailed = -3,
+    assemblyFileOpenFailed = -4,
+    tooManySyntaxErrors = -5,
+    stackOverflow = -6,
+    codeSegmentOverflow = -7,
+    nestingTooDeep = -8,
+    runtimeerroror = -9,
+    unimplementedFeature = -10,
 };
 
 void abort(AbortCode abortCode);
 
-enum ErrorCode {
-	errorNone,
+enum ErrorCode
+{
+    errorNone,
     errorUnrecognizable,
     errorTooMany,
     errorUnexpectedEndOfFile,

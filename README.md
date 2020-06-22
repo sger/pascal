@@ -4,10 +4,17 @@ This version of Pascal is based on book [Writing Compilers and Interpreters: A S
 
 ## Build
 
-To build Pascal, simply run:
+To build manually Pascal run:
 
-    $ make
-    $ ./pascal examples/hello.pas
+```bash
+$ mkdir build
+$ git submodule init && git submodule update
+$ cd build
+$ cmake ..
+$ make && make install
+$ cd ..
+$ bin/pascal examples/hello.pas -x
+```
 
 ## Status
 

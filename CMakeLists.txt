@@ -17,4 +17,4 @@ set(PASCAL_INSTALL_BIN_DIR ${PROJECT_SOURCE_DIR}/bin)
 # include_directories(${DIVISION_HEADERS_DIR})
 
 add_subdirectory(src)
-add_subdirectory(test)
+# add_subdirectory(test)

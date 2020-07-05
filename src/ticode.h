@@ -2,8 +2,8 @@
 #define ticode_h
 
 #include "scanner.h"
-#include <fstream>
 #include "token.h"
+#include <fstream>
 
 class SymtabNode;
 
@@ -16,18 +16,14 @@ class TICode : public Scanner {
   int symtabCount;
 
 public:
-  enum TMode {input, output};
+  enum TMode { input, output };
 
   TICode(const char *pTICodeFileName, TMode mode);
   ~TICode();
 
-  void goTo(int location) {
-    file.seekg(location, std::ios::beg);
-  }
+  void goTo(int location) { file.seekg(location, std::ios::beg); }
 
-  int sizeOfFile() const {
-    return size;
-  }
+  int sizeOfFile() const { return size; }
 
   void put(int value);
   void put(Token tc, short index = -1);

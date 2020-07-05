@@ -6,20 +6,21 @@
 const int maxCompactTextLength = 72;
 
 class CompactListBuffer : public TextOutBuffer {
-	int textLength;
-	char *pText;
+  int textLength;
+  char *pText;
+
 public:
-	CompactListBuffer() {
-		pText = text;
-		*pText = '\0';
-		textLength = 0;
-	}
+  CompactListBuffer() {
+    pText = text;
+    *pText = '\0';
+    textLength = 0;
+  }
 
-	virtual ~CompactListBuffer() {}
+  virtual ~CompactListBuffer() {}
 
-	void putBlank();
-	void put(const char *pString);
-	void putLine();
+  void putBlank();
+  void put(const char *pString);
+  void putLine();
 };
 
 #endif

@@ -8,44 +8,41 @@ char eofChar = 0x7F;
 int inputPosition;
 int listFlag = true;
 
-TextInBuffer::TextInBuffer(const char *pInputFileName, AbortCode abortCode) : pFileName(new char[strlen(pInputFileName) + 1])
-{
-	strcpy(pFileName, pInputFileName);
+TextInBuffer::TextInBuffer(const char *pInputFileName, AbortCode abortCode)
+    : pFileName(new char[strlen(pInputFileName) + 1]) {
+  strcpy(pFileName, pInputFileName);
 
-	file.open(pFileName, std::ios::in);
+  file.open(pFileName, std::ios::in);
 
-	if (!file.good())
-	{
-		abort(abortCode);	
-	}
+  if (!file.good()) {
+    abort(abortCode);
+  }
 }
 
-char TextInBuffer::getChar()
-{
-	const int tabSize = 8;
-	char ch;
+char TextInBuffer::getChar() {
+  const int tabSize = 8;
+  char ch;
 
-	if (*pChar == eofChar) {
-		return eofChar;
-	} else if (*pChar == '\0') {
-		ch = getLine();
-	} else {
-		++pChar;
-		++inputPosition;
-		ch = *pChar;
-	}
+  if (*pChar == eofChar) {
+    return eofChar;
+  } else if (*pChar == '\0') {
+    ch = getLine();
+  } else {
+    ++pChar;
+    ++inputPosition;
+    ch = *pChar;
+  }
 
-	if (ch == '\t') {
-		inputPosition += tabSize - inputPosition % tabSize;
-	}
+  if (ch == '\t') {
+    inputPosition += tabSize - inputPosition % tabSize;
+  }
 
-	return ch;
+  return ch;
 }
 
-char TextInBuffer::putBackChar()
-{
-	--pChar;
-	--inputPosition;
+char TextInBuffer::putBackChar() {
+  --pChar;
+  --inputPosition;
 
-	return *pChar;
+  return *pChar;
 }

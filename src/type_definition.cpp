@@ -1,16 +1,14 @@
 #include "type_definition.h"
 
-TypeDefinition::~TypeDefinition()
-{
-    switch (how)
-    {
-    case dcProgram:
-    case dcProcedure:
-    case dcFunction:
+TypeDefinition::~TypeDefinition() {
+  switch (how) {
+  case dcProgram:
+  case dcProcedure:
+  case dcFunction:
 
-        break;
+    break;
 
-    default:
-        break;
-    }
+  default:
+    break;
+  }
 }

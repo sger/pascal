@@ -1,0 +1,37 @@
+# Build directories
+/build/
+/CMakeFiles/
+/cmake-build-*/
+
+# CMake and Ninja output
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+compile_commands.json
+*.ninja
+.ninja_deps
+.ninja_log
+
+# Executables and object files
+*.out
+*.o
+*.obj
+*.exe
+*.a
+*.so
+*.dll
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.tmp

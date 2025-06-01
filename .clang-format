@@ -1,4 +1,65 @@
-BasedOnStyle: Google
+# Use LLVM style as a base, then override selectively
+BasedOnStyle: LLVM
+
+# General formatting
 IndentWidth: 4
+TabWidth: 4
+UseTab: Never
 ColumnLimit: 100
-AllowShortFunctionsOnASingleLine: Empty
+BreakBeforeBraces: Allman          # Places opening braces on new lines
+
+# Include and sorting
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<.*\.h>'
+    Priority:        1
+    SortPriority:    0
+  - Regex:           '^<.*>'
+    Priority:        2
+    SortPriority:    1
+  - Regex:           '.*'
+    Priority:        3
+    SortPriority:    2
+SortIncludes: true
+IncludeIsMainRegex: '^(.*)\.h$'
+
+# Function formatting
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: false
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakTemplateDeclarations: Yes
+
+# Pointer and reference alignment
+PointerAlignment: Left
+SpaceBeforeParens: ControlStatements
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+
+# Braces and control flow
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+# C++ specific features
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# Misc
+ReflowComments: true
+FixNamespaceComments: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+SortUsingDeclarations: true
+SpacesBeforeTrailingComments: 1
+SpaceBeforeAssignmentOperators: true

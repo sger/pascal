@@ -4,27 +4,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <fstream>
-using namespace std;
+#include "AbortCode.h"
+#include <array>
 
-enum AbortCode {};
-
-const int maxInputBufferSize = 256;
+constexpr int maxInputBufferSize = 256;
 
 class BufferedTextReader {
 protected:
-    fstream file;
-    char *const pFileName;
-    char text[maxInputBufferSize];
-    char *pChar;
+    std::fstream file;
+    std::string pFileName;
+    std::array<char, maxInputBufferSize> text{};
+    char *pChar = nullptr;
 
     virtual auto getLine() -> char = 0;
 public:
     BufferedTextReader(const char *pInputFileName, AbortCode abortCode);
-
-    virtual ~BufferedTextReader() {
-        file.close();
-        delete pFileName;
-    }
+    virtual ~BufferedTextReader();
 
     auto character() const -> char {
         return *pChar;

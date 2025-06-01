@@ -1,14 +1,64 @@
-#include "BufferedTextReader.h"
 #include <cstdio>
-#include <string>
-#include <iostream>
 #include <ctime>
+#include <iostream>
+#include <string>
 
-BufferedTextReader::BufferedTextReader(const char *pInputFileName, AbortCode abortCode)
-    : pFileName(new char[strlen(pInputFileName) + 1]) {
-    strcpy(pFileName, pInputFileName);
+#include "BufferedTextReader.h"
+#include "Constants.h"
+#include "Globals.h"
 
+BufferedTextReader::BufferedTextReader(const char* pInputFileName, AbortCode abortCode)
+    : pFileName(pInputFileName)
+{
     file.open(pFileName, std::ios::in);
-    if (!file.good()) {
+
+    if (!file.is_open())
+    {
+        abortTranslation(abortCode);
     }
+}
+
+BufferedTextReader::~BufferedTextReader()
+{
+    if (file.is_open())
+    {
+        file.close();
+    }
+}
+
+auto BufferedTextReader::getChar() -> char
+{
+    const int tabSize = 8;
+    char nextChar;
+
+    if (*pChar == EOF_CHAR)
+    {
+        return EOF_CHAR;
+    }
+
+    if (*pChar == '\0')
+    {
+        nextChar = getLine();
+    }
+    else
+    {
+        ++pChar;
+        ++inputPosition;
+        nextChar = *pChar;
+    }
+
+    if (nextChar == '\t')
+    {
+        inputPosition += tabSize - inputPosition % tabSize;
+    }
+
+    return nextChar;
+}
+
+auto BufferedTextReader::putBackChar() -> char
+{
+    --pChar;
+    --inputPosition;
+
+    return *pChar;
 }
